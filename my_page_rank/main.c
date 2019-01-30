@@ -93,9 +93,40 @@ for (i=1; i < nombre_de_page;i++){
 	printf("page  %d : degre entran %d \n",i,degre_entran[i]);
 }
 
-
-
 fclose(fichier);
+
+// deuxiemme lecture
+// remplissage du tableau d'arc
+fichier = fopen("web1.txt", "r");
+
+// lire les deux lignes
+fscanf(fichier,"%d",&nombre_de_page);
+fscanf(fichier,"%d",&nombre_de_lien);
+
+nb_page_lu=0;
+
+while(nb_page_lu <nombre_de_page){
+
+	fscanf(fichier,"%d",&num_page);
+
+	fscanf(fichier,"%d",&nb_arc_sortant);
+	//printf ("%f  test \n",nb_arc_sortant);
+
+
+	i=0;
+	while(i < nb_arc_sortant){
+		
+		fscanf(fichier,"%d",&destination);
+		fscanf(fichier,"%f",&poid);	
+		
+		i ++;
+	}
+
+
+nb_page_lu++;
+}
+fclose(fichier);
+
 return 0;
 
 }
