@@ -12,7 +12,7 @@ struct arc{
 };
 typedef struct arc arc;
 
-struct limite_double_inclusive{
+struct limite_double_inclusive{// l indice du tableau correspond au num de la page
 	int debut;
 	int fin;
 };
@@ -40,6 +40,9 @@ FILE* fichier = fopen("web1.txt", "r");
 // 1 ere ligne = nombre de page
 fscanf(fichier,"%d",&nombre_de_page);
 printf ("%d nombre de page \n",nombre_de_page);
+
+int* degre_entran = malloc(sizeof(limite) * nombre_de_page);
+
 // 2 emme ligne = nombre d'arc
 fscanf(fichier,"%d",&nombre_de_lien);
 printf ("%d nombre de lien \n",nombre_de_lien);
@@ -49,15 +52,34 @@ arc* tab = malloc(sizeof(arc) * nombre_de_lien);
 
 //  remplissage du tab
 
-float test;
-fscanf(fichier,"%f",&test);
-printf ("%f  test \n",test);
+
+int num_page;
+int nb_arc_sortant;
+int i;
+int nb_page_lu=0;
+int destination;
+float poid;
+while(nb_page_lu <nombre_de_page){
+
+	fscanf(fichier,"%d",&num_page);
+
+	fscanf(fichier,"%d",&nb_arc_sortant);
+	//printf ("%f  test \n",nb_arc_sortant);
 
 
+	i=0;
+	while(i < nb_arc_sortant){
+		
+		fscanf(fichier,"%d",&destination);
+
+		fscanf(fichier,"%f",&poid);	
+		degre_entran[destination]=degre_entran[destination]+ 1;
+		i ++;
+	}
 
 
-
-
+nb_page_lu++;
+}
 
 fclose(fichier);
 return 0;
