@@ -41,7 +41,8 @@ FILE* fichier = fopen("web1.txt", "r");
 fscanf(fichier,"%d",&nombre_de_page);
 printf ("%d nombre de page \n",nombre_de_page);
 
-int* degre_entran = malloc(sizeof(limite) * nombre_de_page);
+int* degre_entran = malloc(sizeof(int) * nombre_de_page);
+limite* tab_lim = malloc(sizeof(limite) * nombre_de_page);
 
 // 2 emme ligne = nombre d'arc
 fscanf(fichier,"%d",&nombre_de_lien);
@@ -80,6 +81,19 @@ while(nb_page_lu <nombre_de_page){
 
 nb_page_lu++;
 }
+//fin de la premiere lecture
+
+// remplissage du tableau qui dit ou start et ou finissent les pages
+tab_lim[0].debut=0;
+tab_lim[0].fin=degre_entran[0];
+for (i=1; i < nombre_de_page;i++){
+	
+	tab_lim[i].debut=tab_lim[i-1].fin +1;
+	tab_lim[i].fin=tab_lim[i].debut + degre_entran[i];
+	printf("page  %d : degre entran %d \n",i,degre_entran[i]);
+}
+
+
 
 fclose(fichier);
 return 0;
