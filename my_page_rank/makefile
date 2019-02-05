@@ -1,6 +1,7 @@
-
+exec: compil
+	./a.out
+	
 compil:
 	gcc main.c
 
-exec: compil
-	./a.out
+
