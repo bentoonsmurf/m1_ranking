@@ -1,7 +1,15 @@
 #include <stdlib.h>
 #include <stdio.h>
+/*
+g=[0
+espace entre g(1.1) et g(1.2) retout chariot a l afin de lignee
 
 
+alpha = 1 solution pour p 0.166 0.083 0.122 0.194 0.083 0.138 0.159 0.067
+
+q= p*g retour ch
+q*g
+*/
 int nombre_de_page;
 int nombre_de_lien;
 
@@ -49,7 +57,7 @@ printf ("%d nombre de lien \n",nombre_de_lien);
 
 int* degre_entran = malloc(sizeof(int) * (nombre_de_page+1));// on commence a 1 et pas a 0 
 limite* tab_lim = malloc(sizeof(limite) * (nombre_de_page+1));
-	
+double* p = malloc(sizeof(double) * (nombre_de_page+1));
 
 //  init des variables
 
@@ -64,6 +72,11 @@ while (i<nombre_de_page){
 	degre_entran[i]=0;
 	i++;
 }printf("\n");
+i=0;
+while (i<nombre_de_page+1){
+	p[i]=(double)1/nombre_de_page;
+	i++;
+}
 while(nb_page_lu <nombre_de_page){
 
 	fscanf(fichier,"%d",&num_page);
@@ -158,6 +171,47 @@ while (i<nombre_de_lien){
 }
 
 // tab_arc contien maintenant touts les arcs trié par page d'arrivé
+
+
+// tab[n]
+
+
+i=0;
+int j;
+double somme=0;
+int precision=0;
+while(precision<10){
+	while(i<nombre_de_page+1)
+	{
+		if(tab_lim[i].debut !=-1){
+			
+			for (j=tab_lim[i].debut ;  j<tab_lim[i].fin+1 ;j++){
+				// (j,tab_arc[j].
+				// i represente le numero de la page 
+				// j represente 
+				somme = somme+ 	p[i]*tab_arc[j].val;// erreur
+			}
+			p[i]= somme;	
+			somme=0;
+		}
+		i++;
+	}
+	
+	i=1;
+	while (i<nombre_de_page+1){
+		printf("p[%d] = %lf ",i,p[i]);
+
+		printf("\n");
+		i++;
+	}printf("\n");
+	j=0;
+	i=0;
+	precision++;
+	
+	
+}
+	
+
 
 return 0;
 
