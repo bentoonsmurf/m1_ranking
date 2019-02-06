@@ -14,7 +14,7 @@ int nombre_de_page;
 int nombre_de_lien;
 
 struct arc{
-	float val;
+	double val;
 	int ori;// origine
 	int dest;	
 };
@@ -66,17 +66,21 @@ int nb_arc_sortant;
 int i;
 int nb_page_lu=0;
 int destination;
-float poid;
+double poid;
 i=0;
 while (i<nombre_de_page){
 	degre_entran[i]=0;
 	i++;
 }printf("\n");
 i=0;
+
 while (i<nombre_de_page+1){
 	p[i]=(double)1/nombre_de_page;
+	p[i]=(double)0;
 	i++;
 }
+//p[3]=(double)1;
+
 while(nb_page_lu <nombre_de_page){
 
 	fscanf(fichier,"%d",&num_page);
@@ -90,7 +94,7 @@ while(nb_page_lu <nombre_de_page){
 		
 		fscanf(fichier,"%d",&destination);
 		printf("dest %d ",destination);
-		fscanf(fichier,"%f",&poid);	
+		fscanf(fichier,"%lf",&poid);	
 		degre_entran[destination]=degre_entran[destination]+ 1;
 		printf("degr %d ",degre_entran[destination]);
 		i ++;
@@ -146,7 +150,7 @@ while(nb_page_lu <nombre_de_page){
 	while(i < nb_arc_sortant){
 		
 		fscanf(fichier,"%d",&destination);
-		fscanf(fichier,"%f",&poid);	
+		fscanf(fichier,"%lf",&poid);	
 		// je peut remplir tab_arc de [tab_lim.debut : tab_lim.fin]
 		tab_arc[tab_lim[destination].debut + degre_entran[destination] -1].val=poid;//[.....] --> [....A] ---> [...BA]
 		tab_arc[tab_lim[destination].debut + degre_entran[destination] -1].ori=num_page;
@@ -180,7 +184,7 @@ i=0;
 int j;
 double somme=0;
 int precision=0;
-while(precision<10){
+while(precision<1){
 	while(i<nombre_de_page+1)
 	{
 		if(tab_lim[i].debut !=-1){
@@ -188,9 +192,15 @@ while(precision<10){
 			for (j=tab_lim[i].debut ;  j<tab_lim[i].fin+1 ;j++){
 				// (j,tab_arc[j].
 				// i represente le numero de la page 
-				// j represente 
-				somme = somme+ 	p[i]*tab_arc[j].val;// erreur
+				// j represente l'indice de l'arc a traiter dans tab_arc
+				// tab_lim[i]
+				// p[ tab_arc[] ]
+				// il faut mult l'indice de ligne avec l'origine de la matrice
+				// dans ma matrice j'ai la val (4,1) et (8,1) a mult avec p(4) et p (1)
+				somme = somme+ 	p[tab_arc[j].ori]   *  tab_arc[j].val;// erreur
+				printf("tab_arc.ori %d pourcent %lf somme : %lf\n",tab_arc[j].ori,p[tab_arc[j].ori],somme);
 			}
+			printf("%d \n",i);
 			p[i]= somme;	
 			somme=0;
 		}
@@ -198,12 +208,15 @@ while(precision<10){
 	}
 	
 	i=1;
+	double somme2=0;
 	while (i<nombre_de_page+1){
 		printf("p[%d] = %lf ",i,p[i]);
-
+		somme2=somme2+p[i];
 		printf("\n");
 		i++;
-	}printf("\n");
+	}
+	printf(" somme = %lf",somme2);
+	printf("\n");
 	j=0;
 	i=0;
 	precision++;
