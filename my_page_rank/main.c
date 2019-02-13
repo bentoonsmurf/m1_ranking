@@ -58,6 +58,7 @@ printf ("%d nombre de lien \n",nombre_de_lien);
 int* degre_entran = malloc(sizeof(int) * (nombre_de_page+1));// on commence a 1 et pas a 0 
 limite* tab_lim = malloc(sizeof(limite) * (nombre_de_page+1));
 double* p = malloc(sizeof(double) * (nombre_de_page+1));
+double* p_temp = malloc(sizeof(double) * (nombre_de_page+1));
 
 //  init des variables
 
@@ -179,12 +180,14 @@ while (i<nombre_de_lien){
 
 // tab[n]
 
-
+	for(i=0;i<nombre_de_page+1;i++){
+		p[i]=(double)1/nombre_de_page;
+	}
 i=0;
 int j;
 double somme=0;
 int precision=0;
-while(precision<1){
+while(precision<50){
 	while(i<nombre_de_page+1)
 	{
 		if(tab_lim[i].debut !=-1){
@@ -197,16 +200,22 @@ while(precision<1){
 				// p[ tab_arc[] ]
 				// il faut mult l'indice de ligne avec l'origine de la matrice
 				// dans ma matrice j'ai la val (4,1) et (8,1) a mult avec p(4) et p (1)
+				//
+				
+				
 				somme = somme+ 	p[tab_arc[j].ori]   *  tab_arc[j].val;// erreur
 				printf("tab_arc.ori %d pourcent %lf somme : %lf\n",tab_arc[j].ori,p[tab_arc[j].ori],somme);
 			}
 			printf("%d \n",i);
-			p[i]= somme;	
+			
+			p_temp[i]= somme;	
 			somme=0;
 		}
 		i++;
 	}
-	
+	for(i=0;i<nombre_de_page+1;i++){
+		p[i]=p_temp[i];
+	}
 	i=1;
 	double somme2=0;
 	while (i<nombre_de_page+1){
