@@ -187,7 +187,7 @@ i=0;
 int j;
 double somme=0;
 int precision=0;
-while(precision<50){
+while(precision<1000	){
 	while(i<nombre_de_page+1)
 	{
 		if(tab_lim[i].debut !=-1){
