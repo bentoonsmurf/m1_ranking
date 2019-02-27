@@ -1,0 +1,78 @@
+
+
+
+
+
+
+' = transposition
+
+
+1 2 3 4 5 6 7 8 9 10
+
+matrice l
+0 1 0 0 0 0 0 0 0 0
+1 0 1 0 0 0 0 0 0 0
+0 0 0 1 1 1 0 0 0 0
+0 1 0 0 0 0 0 1 1 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 1 0 0 0 0 0 0
+0 0 0 1 1 0 0 0 0 1
+0 0 0 0 0 0 1 0 1 0
+0 0 0 0 1 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+
+x  : autorite
+y  :  hub
+
+x^k = y^k-1(L)
+y^k= x^k(LT)
+
+x^k=x^k+1(LTL)
+
+le spec donne une liste de valeur propres
+la mult de toutes ces val fait le determinant
+la somme fait la trace
+
+
+
+calculer L transpose L
+
+
+
+m=l'*l
+[A,B]=spec(m)
+
+
+A = note des autorité
+
+
+
+
+
+rappel 
+A (matrice d'autorite)
+x^n=x^n-1 A
+
+A ou peut ascosié des (lambda1 ,lambda n)
+						y1 ,     yn
+x^(n)
+x1 = x0 * A
+
+x2=
+
+e 
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+
+
+nnorme de x1=3.7 
+nnorme de x2=16.5
+nnorme de x3=79.6

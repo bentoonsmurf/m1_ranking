@@ -1,0 +1,48 @@
+
+g est elle connexe
+primitive ?
+trouver un m tel que p^m >0
+ca repond a  la questio de primitivite 
+
+si g est fortement connexe et l pgcd des longeures de cycles de g vaux 1
+trouver deux cycles de longeures premieres entres elles
+
+g^9 > 0 pour toutes ses valeurs( strictement)
+
+0 1 0 0 0 0 0
+0 0 1 0 0 0 0
+0 0 0 0.5 0 0.5 0
+0.5 0 0 0 0.5 0 0
+0.5 0 0 0 0 0.5 0
+0 0 0 0 0 0 1
+0 0 0 1 0 0 0
+
+lr tel que la somme en ligne vaux soit 1 soit 0
+lc tel que la somme en colonne 
+calculer le grav bipartie (vh,va,E)
+d'un cote d=les hub de lautre le s autorité
+l'union de vh et va et un graph de taille 10somet
+
+0 1 1 0 0 0 0 0 0 0
+0 0 1 1 0 0 0 0 0 0
+0 0 0 1 0 0 0 0 1 1
+0 0 0 0 0 0 0 1 1 0
+0 0 0 1 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 1 0 1 0 0 0 0
+0 0 0 0 0 0 1 0 0 0
+0 0 0 0 1 0 0 0 0 0
+0 0 0 1 0 0 0 0 1 0
+
+h = taille nombre de hub
+lr lcT= h
+lcT lr= a
+les rendres stochastiques
+chercher les notes de hub et d'autorité ( h¹⁰⁰ et a¹⁰⁰) 
+biparti
+
+hub = arc sortant 
+1,2,3,4,5,7,8,9,10
+autorite 
+2,3,4,5,6,7,8,9,10
+
